@@ -16,9 +16,9 @@ const db = {};
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-db.Role = require("./Role")(sequelize, DataTypes);
-db.User = require("./User")(sequelize, DataTypes);
-db.Message = require("./Message")(sequelize, DataTypes);
+db.Role = require("./role")(sequelize, DataTypes);
+db.User = require("./user")(sequelize, DataTypes);
+db.Message = require("./message")(sequelize, DataTypes);
 
 // Define Relationships
 db.Role.hasMany(db.User, { foreignKey: "roleId", as: "users" });
