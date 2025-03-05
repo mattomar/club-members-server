@@ -31,7 +31,7 @@ db.Message.belongsTo(db.User, { foreignKey: "senderId", as: "sender" });
 db.Message.belongsTo(db.User, { foreignKey: "receiverId", as: "receiver" });
 
 // Sync database
-sequelize.sync()
+sequelize.sync({ alter: true }) // Instead of just sequelize.sync()
   .then(() => console.log("Database synced"))
   .catch(err => console.log("Error syncing database:", err));
 
