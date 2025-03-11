@@ -1,8 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const path = require("path"); // ✅ Import path module
 const db = require("./models"); // Import database models
-
 const authRoutes = require("./routes/auth"); // Import auth routes
 
 const app = express();
@@ -12,13 +12,14 @@ app.use(cors());
 app.use(express.json()); // For parsing JSON requests
 
 // Test Route
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("✅ Server is running!");
 });
 
 // Routes
 app.use("/api/auth", authRoutes); // Mount authentication routes
 
+ 
 // Sync Database and Start Server
 const PORT = process.env.PORT || 5000;
 
