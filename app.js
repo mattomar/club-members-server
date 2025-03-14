@@ -4,6 +4,8 @@ const cors = require("cors");
 const path = require("path"); // ✅ Import path module
 const db = require("./models"); // Import database models
 const authRoutes = require("./routes/auth"); // Import auth routes
+const messagesRoute = require("./routes/messages")
+
 
 const app = express();
 
@@ -18,6 +20,8 @@ app.get("/api", (req, res) => {
 
 // Routes
 app.use("/api/auth", authRoutes); // Mount authentication routes
+app.use("/api/messages", messagesRoute);
+
 
  
 // Sync Database and Start Server
