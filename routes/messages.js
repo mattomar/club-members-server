@@ -56,4 +56,21 @@ router.get("/", async (req, res) => {
   }
 });
 
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const message = await Message.findByPk(id);
+    if (!message) {
+      return res.status(404).json({ error: "Message not found" });
+    }
+
+    await message.destroy();
+    res.json({ success: true, message: "Message deleted successfully" });
+  } catch (error) {
+    console.error("❌ Error deleting message:", error);
+    res.status(500).json({ error: "Failed to delete message" });
+  }
+});
 module.exports = router;
