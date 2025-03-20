@@ -1,24 +1,29 @@
 const { Sequelize } = require("sequelize");
 require("dotenv").config();
 
-const sequelize = new Sequelize(process.env.DB_URL, {
-  dialect: "postgres",
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false, // Required for NeonDB
+const sequelize = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASS,
+  {
+    host: process.env.DB_HOST,
+    dialect: "postgres",
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false, 
+      },
     },
-  },
-  logging: false, // Optional: Disable logs
-});
+    logging: false,
+  }
+);
 
-// Test connection
 sequelize
   .authenticate()
   .then(() => console.log("✅ Database connected!"))
   .catch((err) => {
     console.error("❌ Connection error:", err);
-    process.exit(1); // Force the app to stop if DB connection fails
+    process.exit(1);
   });
 
 module.exports = sequelize;

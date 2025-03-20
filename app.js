@@ -25,7 +25,7 @@ app.use("/api/messages", messagesRoute);
 
  
 // Sync Database and Start Server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 db.sequelize
   .sync()
