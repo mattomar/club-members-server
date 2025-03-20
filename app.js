@@ -10,7 +10,7 @@ const app = express();
 
 // ✅ CORS Configuration to Allow Requests from Vercel Frontend
 const corsOptions = {
-  origin: "https://club-members-ec36rt5mw-mattomars-projects.vercel.app", // ✅ Replace with your frontend URL
+  origin: "https://club-members-da87mnipf-mattomars-projects.vercel.app", // ✅ Replace with your frontend URL
   credentials: true, // ✅ Allow cookies/auth headers
   optionsSuccessStatus: 200,
 };
